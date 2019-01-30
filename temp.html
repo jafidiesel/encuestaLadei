@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 3 Form Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="一个基于Bootstrap3的表单创建器。" />
+    <meta name="keywords" content="Bootstrap 3 Form Builder" />
+
+    <link href="js/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px;
+            /* 60px to make the container go all the way to the bottom of the topbar */
+            padding-bottom: 10px;
+        }
+        
+        #components {
+            min-height: 600px;
+            margin-top: 5px;
+        }
+        
+        #target {
+            min-height: 200px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        
+        #target .component {
+            border: 1px solid #fff;
+        }
+        
+        #temp {
+            width: 500px;
+            background: white;
+            border: 1px dotted #ccc;
+            border-radius: 10px;
+        }
+        
+        .popover-content form {
+            margin: 0 auto;
+            width: 213px;
+        }
+        
+        .popover-content form .btn {
+            margin-right: 10px
+        }
+        
+        #source {
+            min-height: 500px;
+        }
+    </style>
+    <link href="js/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+
+        <form class="form-horizontal">
+            <fieldset>
+                <div id="legend" class="">
+                    <legend class="">Form Name</legend>
+                </div>
+                <div class="form-group">
+                    <!-- Text input-->
+                    <label class="col-md-4 control-label" for="input01">Text input</label>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="placeholder" class="form-control input-md">
+                            <p class="help-block">Supporting help text...</p>
+                        </div>
+                    </div>
+
+                <div class="form-group">
+
+                    <!-- Textarea -->
+                    <label class="col-md-4 control-label">Textarea</label>
+                    <div class="col-md-4">
+                        <div class="textarea">
+                            <textarea class="form-control"> </textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <!-- Select Basic -->
+                    <label class="col-md-4 control-label">Select - Basic</label>
+                        <div class="col-md-4">
+                            <select class="form-control input-md">
+                                <option>Enter</option>
+                                <option>Your</option>
+                                <option>Options</option>
+                                <option>Here!</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Checkboxes</label>
+                    <div class="col-md-4">
+
+                        <!-- Multiple Checkboxes -->
+                        <label class="checkbox">
+                            <input type="checkbox" value="Option one">
+                            Option one
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" value="Option two">
+                            Option two
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Radio buttons</label>
+                    <div class="col-md-4">
+
+                        <!-- Multiple Radios -->
+                        <label class="radio">
+                            <input type="radio" value="Option one" name="group" checked="checked">
+                            Option one
+                        </label>
+                        <label class="radio">
+                            <input type="radio" value="Option two" name="group">
+                            Option two
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">File Button</label>
+
+                    <!-- File Upload -->
+                    <div class="col-md-4">
+                        <input class="input-file" id="fileInput" type="file">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Button</label>
+
+                    <!-- Button -->
+                    <div class="col-md-4">
+                        <button class="btn btn-success">Button</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+        
+
+
+
+    <script>
+        var elements = document.getElementsByClassName('form-group');
+        console.log("elements.length " + elements.length);
+        for (const element of elements) {
+            console.log(element);
+            
+            getElements(element);
+
+        }
+
+        function getElements(element){
+            switch (element.nodeName){
+                case "DIV":
+                    console.log("element div " + element.nodeName);
+                    let elementChildrens  = element.children;
+                    for (const elem of elementChildrens){
+                        getElements(elem);
+                    }
+                break;
+                case "LABEL":
+                    console.log("element label " + element.nodeName);
+                    console.log(element.children.length);
+                    if(element.children.length === 0){
+                        console.log(element.nodeName + ": " +element.innerHTML);
+                    }else{
+                        getElements(element);
+                    }
+
+                break;
+                case "INPUT":
+                    console.log("element input " + element.nodeName);
+
+                break;
+                case "TEXTAREA":
+                    console.log("element textarea " + element.nodeName);
+
+                break;
+                case "SELECT":
+                    console.log("element select " + element.nodeName);
+
+                break;
+                case "BUTTON":
+                    console.log("element button " + element.nodeName);
+
+                break;
+                case "P":
+                    //console.log("element p " + element.nodeName);
+                    console.log(element.nodeName + ": " +element.innerHTML);
+
+                break;
+            }
+        }
+
+        // valtype
+
+        // Metodo para obtener el contenido de un label
+        // el 0 representa el primer metodo de form-group
+        // Todos los elements que se ingresan (checkbox, pregunta con descripcion, etc) se agrupan en form-group
+        // elements[0].getElementsByTagName('label')[0].innerHTML
+
+        // Metodo para obtener el texto de ayuda de un input
+        // elements[0].querySelector(".help-block")
+
+        // Metodo para obtener los input en caso de tener checkboxes o radiobutton
+        // elements[1].querySelectorAll("input")
+
+        //document.getElementById('build').querySelectorAll('.form-group');
+        //document.getElementById('build').querySelectorAll('.form-group')[0].querySelector('label').innerHTML
+    </script>
+</body>
+
+</html>
