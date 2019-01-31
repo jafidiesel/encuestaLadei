@@ -62,106 +62,107 @@
 <body>
 
 
+    <form class="form-horizontal">
+        <fieldset>
+            <div id="legend" class="">
+                <legend class="">Form Name</legend>
+            </div>
+            <div class="form-group">
 
-        <form class="form-horizontal">
-            <fieldset>
-                <div id="legend" class="">
-                    <legend class="">Form Name</legend>
+                <!-- Text input-->
+                <label class="col-md-4 control-label" for="input01">Text input</label>
+                <div class="col-md-4">
+                    <input type="text" placeholder="placeholder" class="form-control input-md">
+                    <p class="help-block">Supporting help text...</p>
                 </div>
-                <div class="form-group">
-                    <!-- Text input-->
-                    <label class="col-md-4 control-label" for="input01">Text input</label>
-                        <div class="col-md-4">
-                            <input type="text" placeholder="placeholder" class="form-control input-md">
-                            <p class="help-block">Supporting help text...</p>
-                        </div>
-                    </div>
+            </div>
 
-                <div class="form-group">
+            <div class="form-group">
 
-                    <!-- Textarea -->
-                    <label class="col-md-4 control-label">Textarea</label>
-                    <div class="col-md-4">
-                        <div class="textarea">
-                            <textarea class="form-control"> </textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-
-                    <!-- Select Basic -->
-                    <label class="col-md-4 control-label">Select - Basic</label>
-                        <div class="col-md-4">
-                            <select class="form-control input-md">
-                                <option>Enter</option>
-                                <option>Your</option>
-                                <option>Options</option>
-                                <option>Here!</option>
-                            </select>
-                        </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Checkboxes</label>
-                    <div class="col-md-4">
-
-                        <!-- Multiple Checkboxes -->
-                        <label class="checkbox">
-                            <input type="checkbox" value="Option one">
-                            Option one
-                        </label>
-                        <label class="checkbox">
-                            <input type="checkbox" value="Option two">
-                            Option two
-                        </label>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Radio buttons</label>
-                    <div class="col-md-4">
-
-                        <!-- Multiple Radios -->
-                        <label class="radio">
-                            <input type="radio" value="Option one" name="group" checked="checked">
-                            Option one
-                        </label>
-                        <label class="radio">
-                            <input type="radio" value="Option two" name="group">
-                            Option two
-                        </label>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label">File Button</label>
-
-                    <!-- File Upload -->
-                    <div class="col-md-4">
-                        <input class="input-file" id="fileInput" type="file">
+                <!-- Textarea -->
+                <label class="col-md-4 control-label">Textarea</label>
+                <div class="col-md-4">
+                    <div class="textarea">
+                        <textarea class="form-control" placeholder="Option textarea placeholder"> >textarea inner text </textarea>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Button</label>
+            <div class="form-group">
 
-                    <!-- Button -->
-                    <div class="col-md-4">
-                        <button class="btn btn-success">Button</button>
-                    </div>
+                <!-- Select Basic -->
+                <label class="col-md-4 control-label">Select - Basic</label>
+                <div class="col-md-4">
+                    <select class="form-control input-md">
+                        <option>Enter</option>
+                        <option>Your</option>
+                        <option>Options</option>
+                        <option>Here!</option>
+                    </select>
                 </div>
 
-            </fieldset>
-        </form>
-        
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Checkboxes</label>
+                <div class="col-md-4">
+
+                    <!-- Multiple Checkboxes -->
+                    <label class="checkbox">
+                        <input type="checkbox" value="Option one" placeholder="Option one placeholder">
+                        <p>Option one</p>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="Option two" placeholder="Option two placeholder">
+                        <p>Option two</p>
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Radio buttons</label>
+                <div class="col-md-4">
+
+                    <!-- Multiple Radios -->
+                    <label class="radio">
+                        <input type="radio" value="Option one" placeholder="Option one placeholder" name="group" checked="checked">
+                        <p>Option one</p>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="Option two" placeholder="Option two placeholder" name="group">
+                        <p>Option two</p>
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">File Button</label>
+
+                <!-- File Upload -->
+                <div class="col-md-4">
+                    <input class="input-file" id="fileInput" type="file">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Button</label>
+
+                <!-- Button -->
+                <div class="col-md-4">
+                    <button class="btn btn-success">Button</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
 
 
 
-    <script>
+
+
+<script>
         var elements = document.getElementsByClassName('form-group');
         console.log("elements.length " + elements.length);
         for (const element of elements) {
@@ -174,41 +175,54 @@
         function getElements(element){
             switch (element.nodeName){
                 case "DIV":
-                    console.log("element div " + element.nodeName);
                     let elementChildrens  = element.children;
+                    console.log(element.nodeName + " childrens: " + elementChildrens.length);
                     for (const elem of elementChildrens){
                         getElements(elem);
                     }
                 break;
                 case "LABEL":
-                    console.log("element label " + element.nodeName);
-                    console.log(element.children.length);
-                    if(element.children.length === 0){
-                        console.log(element.nodeName + ": " +element.innerHTML);
-                    }else{
-                        getElements(element);
+                    console.log("LABEL childrens: " + element.children.length);
+                    if(element.children.length == 0){
+                        console.log("> " + element.nodeName + ": " +element.innerHTML);
+                    }else if(element.children.length > 1){
+                        let elementChildrens = element.children;
+                            console.log(element.nodeName + ": " +element.name);
+                        for (const elem of elementChildrens){
+                            getElements(elem);
+
+                        }
                     }
 
                 break;
                 case "INPUT":
-                    console.log("element input " + element.nodeName);
+                    console.log("> " + element.nodeName + ": " +element.innerHTML);
+                    console.log("> " + element.nodeName + " placeholder: " +element.placeholder);
 
                 break;
                 case "TEXTAREA":
-                    console.log("element textarea " + element.nodeName);
+                    console.log(element.nodeName + ": " +element.innerHTML);
 
                 break;
                 case "SELECT":
-                    console.log("element select " + element.nodeName);
+                    console.log("SELECT childrens: " + element.children.length);
+                    if(element.children.length == 0){
+                        console.log("> " + element.nodeName + ": " +element.innerHTML);
+                    }else if(element.children.length > 1){
+                        console.log(element.nodeName + ": " +element.name);
+                        for(const option of element.children){
+                            console.log("> " +  option.nodeName + ": " + option.text);
+                        }
+                    }
 
                 break;
                 case "BUTTON":
-                    console.log("element button " + element.nodeName);
+                    console.log("> " + element.nodeName + ": " +element.innerHTML);
 
                 break;
                 case "P":
                     //console.log("element p " + element.nodeName);
-                    console.log(element.nodeName + ": " +element.innerHTML);
+                    console.log("> " + element.nodeName + ": " +element.innerHTML);
 
                 break;
             }
