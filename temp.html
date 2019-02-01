@@ -163,44 +163,53 @@
 
 
 <script>
-        var elements = document.getElementsByClassName('form-group');
-        console.log("elements.length " + elements.length);
-        for (const element of elements) {
-            console.log(element);
+        let objetoJSON ="";
+        let preguntas = document.getElementsByClassName('form-group');
+        console.log("elements.length " + preguntas.length);
+        for (const pregunta of preguntas) {
+            console.log(pregunta);
             
-            getElements(element);
-
+            objetoJSON = objetoJSON +  " { \n";
+            armarObjetoJSON(pregunta);
+            objetoJSON = objetoJSON +  " } \n";
         }
+        console.log("-------------");
+        console.log(objetoJSON);
 
-        function getElements(element){
+        function armarObjetoJSON(element){
+
             switch (element.nodeName){
                 case "DIV":
                     let elementChildrens  = element.children;
                     console.log(element.nodeName + " childrens: " + elementChildrens.length);
                     for (const elem of elementChildrens){
-                        getElements(elem);
+                        armarObjetoJSON(elem);
                     }
                 break;
                 case "LABEL":
                     console.log("LABEL childrens: " + element.children.length);
                     if(element.children.length == 0){
+                        objetoJSON = objetoJSON + " label: '" +element.innerHTML + "' \n";
                         console.log("> " + element.nodeName + ": " +element.innerHTML);
+
                     }else if(element.children.length > 1){
                         let elementChildrens = element.children;
                             console.log(element.nodeName + ": " +element.name);
                         for (const elem of elementChildrens){
-                            getElements(elem);
+                            armarObjetoJSON(elem);
 
                         }
                     }
 
                 break;
                 case "INPUT":
+                    objetoJSON = objetoJSON + " input: '"  + element.innerHTML + "' \n"  ;
                     console.log("> " + element.nodeName + ": " +element.innerHTML);
                     console.log("> " + element.nodeName + " placeholder: " +element.placeholder);
 
                 break;
                 case "TEXTAREA":
+                    objetoJSON = objetoJSON + " textarea: '" +element.innerHTML + "' \n" ;
                     console.log(element.nodeName + ": " +element.innerHTML);
 
                 break;
@@ -210,23 +219,31 @@
                         console.log("> " + element.nodeName + ": " +element.innerHTML);
                     }else if(element.children.length > 1){
                         console.log(element.nodeName + ": " +element.name);
+                        objetoJSON = objetoJSON + " select: [\n ";
+
                         for(const option of element.children){
+                            objetoJSON = objetoJSON + " option: '" + option.text + "' \n" ;
                             console.log("> " +  option.nodeName + ": " + option.text);
                         }
-                    }
 
+                        objetoJSON = objetoJSON + "] \n";
+                    }
+                
                 break;
                 case "BUTTON":
+                    objetoJSON = objetoJSON + " button: "+ element.innerHTML + "\n" ;
                     console.log("> " + element.nodeName + ": " +element.innerHTML);
 
                 break;
                 case "P":
                     //console.log("element p " + element.nodeName);
+                    objetoJSON = objetoJSON + " text: " + element.innerHTML + "\n" ;
                     console.log("> " + element.nodeName + ": " +element.innerHTML);
 
                 break;
             }
         }
+
 
         // valtype
 
