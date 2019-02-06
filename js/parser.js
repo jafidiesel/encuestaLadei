@@ -1,14 +1,14 @@
 let objetoJSON ="";
 function onLoad(){
     let preguntas = document.getElementsByClassName('form-group');
-    //console.log("elements.length " + preguntas.length);
-    for (const pregunta of preguntas) {
+    for(let i = 0; i< preguntas.length; i++){
         objetoJSON = objetoJSON +  " { \n";
-        armarObjetoJSON(pregunta);
-        objetoJSON = objetoJSON +  " } \n";
+        armarObjetoJSON(preguntas[i]);
+        
+        ( i != (preguntas.length - 1) )? objetoJSON = objetoJSON +  " }, \n" : objetoJSON = objetoJSON +  " } \n";
+
     }
-    //console.log("-------------");
-    //console.log(objetoJSON);
+    console.log(objetoJSON);
 }
 
 /*
@@ -30,13 +30,12 @@ function armarObjetoJSON(element){
         break;
         case "LABEL":
             if(element.children.length == 0){
-                //objetoJSON = objetoJSON + " **pregunta** " + " \n";
-                objetoJSON = objetoJSON + " pregunta: '" +element.innerHTML + "' \n";
+                objetoJSON = objetoJSON + " pregunta: '" +element.innerHTML + "', \n";
                 
             }else if(element.children.length > 1){
                 let elementChildrens = element.children;
-                for (const elem of elementChildrens){
-                    armarObjetoJSON(elem);
+                for(let i = 0; i< elementChildrens.length; i++){
+                    armarObjetoJSON(elementChildrens[i]);
 
                 }
             }
@@ -47,7 +46,6 @@ function armarObjetoJSON(element){
                 
                 break;
             case "TEXTAREA":
-                //objetoJSON = objetoJSON + " textarea: '" +element.innerHTML + "' \n" ;
                 objetoJSON = objetoJSON + " tipo: '" +element.nodeName + "' \n";
             
             break;
@@ -74,7 +72,6 @@ function armarObjetoJSON(element){
             
             break;
             case "P":
-            //console.log("element p " + element.nodeName);
                 if(element.className === "help-block"){
                     objetoJSON = objetoJSON + " texto de ayuda: '" + element.innerHTML + "' \n" ;
                     
