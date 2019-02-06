@@ -9,6 +9,7 @@
     <meta name="keywords" content="Bootstrap 3 Form Builder" />
 
     <link href="js/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/parser.js"></script>
     <style>
         body {
             padding-top: 60px;
@@ -59,208 +60,97 @@
 
 </head>
 
-<body>
+<body onload="onLoad()">
 
 
     <form class="form-horizontal">
         <fieldset>
             <div id="legend" class="">
-                <legend class="">Form Name</legend>
+                <legend class="">Cuestionario uno</legend>
             </div>
             <div class="form-group">
-
                 <!-- Text input-->
-                <label class="col-md-4 control-label" for="input01">Text input</label>
+                <label class="col-md-4 control-label" for="input01">¿Pregunta?</label>
                 <div class="col-md-4">
-                    <input type="text" placeholder="placeholder" class="form-control input-md">
-                    <p class="help-block">Supporting help text...</p>
+                    <input type="text" placeholder="Ingrese su pregunta" class="form-control input-md">
+                    <p class="help-block">Texto de ayuda</p>
                 </div>
             </div>
-
             <div class="form-group">
-
                 <!-- Textarea -->
-                <label class="col-md-4 control-label">Textarea</label>
+                <label class="col-md-4 control-label">¿Pregunta?</label>
                 <div class="col-md-4">
                     <div class="textarea">
-                        <textarea class="form-control" placeholder="Option textarea placeholder"> >textarea inner text </textarea>
+                        <textarea class="form-control"> </textarea>
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
-
                 <!-- Select Basic -->
-                <label class="col-md-4 control-label">Select - Basic</label>
+                <label class="col-md-4 control-label">Seleccione su provincia</label>
                 <div class="col-md-4">
                     <select class="form-control input-md">
-                        <option>Enter</option>
-                        <option>Your</option>
-                        <option>Options</option>
-                        <option>Here!</option>
+                        <option>Mendoza</option>
+                        <option>Buenos Aires</option>
+                        <option>Cordoba</option>
+                        <option>Tucuman</option>
                     </select>
                 </div>
-
             </div>
-
             <div class="form-group">
-                <label class="col-md-4 control-label">Checkboxes</label>
+                <label class="col-md-4 control-label">Horas de estudio semanal</label>
                 <div class="col-md-4">
-
                     <!-- Multiple Checkboxes -->
                     <label class="checkbox">
-                        <input type="checkbox" value="Option one" placeholder="Option one placeholder">
-                        <p>Option one</p>
+                        <input type="checkbox" value="25hs">
+                        <p class="opcion">25hs</p>
                     </label>
                     <label class="checkbox">
-                        <input type="checkbox" value="Option two" placeholder="Option two placeholder">
-                        <p>Option two</p>
+                        <input type="checkbox" value="30hs">
+                        <p class="opcion">30hs</p>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="40hs">
+                        <p class="opcion">40hs</p>
                     </label>
                 </div>
-
             </div>
-
             <div class="form-group">
-                <label class="col-md-4 control-label">Radio buttons</label>
+                <label class="col-md-4 control-label">Lugar de preferencia de estudio</label>
                 <div class="col-md-4">
-
                     <!-- Multiple Radios -->
                     <label class="radio">
-                        <input type="radio" value="Option one" placeholder="Option one placeholder" name="group" checked="checked">
-                        <p>Option one</p>
+                        <input type="radio" value="Universidad" name="group" checked="checked">
+                        <p class="opcion">Universidad</p>
                     </label>
                     <label class="radio">
-                        <input type="radio" value="Option two" placeholder="Option two placeholder" name="group">
-                        <p>Option two</p>
+                        <input type="radio" value="Hogar" name="group">
+                        <p class="opcion">Hogar</p>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="Biblioteca" name="group">
+                        <p class="opcion">Biblioteca</p>
                     </label>
                 </div>
-
             </div>
-
             <div class="form-group">
-                <label class="col-md-4 control-label">File Button</label>
-
+                <label class="col-md-4 control-label">Añadir imagen</label>
                 <!-- File Upload -->
                 <div class="col-md-4">
                     <input class="input-file" id="fileInput" type="file">
                 </div>
             </div>
-
             <div class="form-group">
-                <label class="col-md-4 control-label">Button</label>
-
+                <label class="col-md-4 control-label">Enviar</label>
                 <!-- Button -->
                 <div class="col-md-4">
-                    <button class="btn btn-success">Button</button>
+                    <button class="btn btn-info">boton</button>
                 </div>
             </div>
 
         </fieldset>
     </form>
 
-
-
-
-
-<script>
-        let objetoJSON ="";
-        let preguntas = document.getElementsByClassName('form-group');
-        console.log("elements.length " + preguntas.length);
-        for (const pregunta of preguntas) {
-            console.log(pregunta);
-            
-            objetoJSON = objetoJSON +  " { \n";
-            armarObjetoJSON(pregunta);
-            objetoJSON = objetoJSON +  " } \n";
-        }
-        console.log("-------------");
-        console.log(objetoJSON);
-
-        function armarObjetoJSON(element){
-
-            switch (element.nodeName){
-                case "DIV":
-                    let elementChildrens  = element.children;
-                    console.log(element.nodeName + " childrens: " + elementChildrens.length);
-                    for (const elem of elementChildrens){
-                        armarObjetoJSON(elem);
-                    }
-                break;
-                case "LABEL":
-                    console.log("LABEL childrens: " + element.children.length);
-                    if(element.children.length == 0){
-                        objetoJSON = objetoJSON + " label: '" +element.innerHTML + "' \n";
-                        console.log("> " + element.nodeName + ": " +element.innerHTML);
-
-                    }else if(element.children.length > 1){
-                        let elementChildrens = element.children;
-                            console.log(element.nodeName + ": " +element.name);
-                        for (const elem of elementChildrens){
-                            armarObjetoJSON(elem);
-
-                        }
-                    }
-
-                break;
-                case "INPUT":
-                    objetoJSON = objetoJSON + " input: '"  + element.innerHTML + "' \n"  ;
-                    console.log("> " + element.nodeName + ": " +element.innerHTML);
-                    console.log("> " + element.nodeName + " placeholder: " +element.placeholder);
-
-                break;
-                case "TEXTAREA":
-                    objetoJSON = objetoJSON + " textarea: '" +element.innerHTML + "' \n" ;
-                    console.log(element.nodeName + ": " +element.innerHTML);
-
-                break;
-                case "SELECT":
-                    console.log("SELECT childrens: " + element.children.length);
-                    if(element.children.length == 0){
-                        console.log("> " + element.nodeName + ": " +element.innerHTML);
-                    }else if(element.children.length > 1){
-                        console.log(element.nodeName + ": " +element.name);
-                        objetoJSON = objetoJSON + " select: [\n ";
-
-                        for(const option of element.children){
-                            objetoJSON = objetoJSON + " option: '" + option.text + "' \n" ;
-                            console.log("> " +  option.nodeName + ": " + option.text);
-                        }
-
-                        objetoJSON = objetoJSON + "] \n";
-                    }
-                
-                break;
-                case "BUTTON":
-                    objetoJSON = objetoJSON + " button: "+ element.innerHTML + "\n" ;
-                    console.log("> " + element.nodeName + ": " +element.innerHTML);
-
-                break;
-                case "P":
-                    //console.log("element p " + element.nodeName);
-                    objetoJSON = objetoJSON + " text: " + element.innerHTML + "\n" ;
-                    console.log("> " + element.nodeName + ": " +element.innerHTML);
-
-                break;
-            }
-        }
-
-
-        // valtype
-
-        // Metodo para obtener el contenido de un label
-        // el 0 representa el primer metodo de form-group
-        // Todos los elements que se ingresan (checkbox, pregunta con descripcion, etc) se agrupan en form-group
-        // elements[0].getElementsByTagName('label')[0].innerHTML
-
-        // Metodo para obtener el texto de ayuda de un input
-        // elements[0].querySelector(".help-block")
-
-        // Metodo para obtener los input en caso de tener checkboxes o radiobutton
-        // elements[1].querySelectorAll("input")
-
-        //document.getElementById('build').querySelectorAll('.form-group');
-        //document.getElementById('build').querySelectorAll('.form-group')[0].querySelector('label').innerHTML
-    </script>
 </body>
 
 </html>
