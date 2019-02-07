@@ -1,89 +1,98 @@
-let objetoJSON ="";
+let objetoJSON = "";
 function onLoad(){
     let preguntas = document.getElementsByClassName('form-group');
     for(let i = 0; i< preguntas.length; i++){
         objetoJSON = objetoJSON +  " { \n";
-        armarObjetoJSON(preguntas[i]);
+        objetoJSON = objetoJSON + armarObjetoJSON(preguntas[i]);
         
         ( i != (preguntas.length - 1) )? objetoJSON = objetoJSON +  " }, \n" : objetoJSON = objetoJSON +  " } \n";
-
+        
     }
     console.log(objetoJSON);
 }
 
 /*
-    Datos a almacenar por cada registro:
-    - Descripcion de la pregunta
-    - Descripcion de la opcion
-    - Tipo de la opcion
+Datos a almacenar por cada registro:
+- Descripcion de la pregunta
+- Descripcion de la opcion
+- Tipo de la opcion
 */
 
 
 function armarObjetoJSON(element){
-
     switch (element.nodeName){
         case "DIV":
+            let resultadoDiv = "";
             let elementChildrens  = element.children;
             for (const elem of elementChildrens){
-                armarObjetoJSON(elem);
+                resultadoDiv = resultadoDiv + armarObjetoJSON(elem);
             }
-        break;
+            return resultadoDiv;
+            break;
         case "LABEL":
+            let resultadoLabel = "";
             if(element.children.length == 0){
-                objetoJSON = objetoJSON + " pregunta: '" +element.innerHTML + "', \n";
+                resultadoLabel = " pregunta: '" +element.innerHTML + "', \n";
+                //objetoJSON = objetoJSON + " pregunta: '" +element.innerHTML + "', \n";
                 
             }else if(element.children.length > 1){
                 let elementChildrens = element.children;
                 for(let i = 0; i< elementChildrens.length; i++){
-                    armarObjetoJSON(elementChildrens[i]);
+                    //debugger;
+                    resultadoLabel = resultadoLabel + armarObjetoJSON(elementChildrens[i]);
 
+                    
                 }
             }
+            return resultadoLabel;
             
             break;
-            case "INPUT":
-                objetoJSON = objetoJSON + " tipo: '"  + element.type + "' \n"  ;
+        case "INPUT":
+                return " tipo: '"  + element.type + "', \n"  ;
                 
                 break;
-            case "TEXTAREA":
-                objetoJSON = objetoJSON + " tipo: '" +element.nodeName + "' \n";
-            
-            break;
-            case "SELECT":
-                objetoJSON = objetoJSON + " tipo: '" +element.nodeName + "' \n";
-                if(element.children.length > 1){
-                    objetoJSON = objetoJSON + " select: [\n ";
+        case "TEXTAREA":
+                return " tipo: '" +element.nodeName + "' \n";
+                
+                break;
+        case "SELECT":
+            let resultadoSelect = ""; 
+            resultadoSelect = " tipo: '" +element.nodeName + "' \n";
+            if(element.children.length > 1){
+                resultadoSelect = resultadoSelect + " select: [\n ";
+                
+                for(let i = 0; i< element.children.length; i++){
+                    resultadoSelect = resultadoSelect + " opcion: '" + element.children[i].text + "'" ;
                     
-                    for(const option of element.children){
-                        objetoJSON = objetoJSON + " opcion: '" + option.text + "' \n" ;
+                    ( i != (element.children.length - 1) )? resultadoSelect = resultadoSelect +  ", \n" : resultadoSelect = resultadoSelect +  "] \n"   ;
                     }
                     
-                    objetoJSON = objetoJSON + "] \n";
+                    return resultadoSelect;
                 }
             
             break;
             case "BUTTON":
-                if(element.selected == "selected"){
-                    debugger;
-                    objetoJSON = objetoJSON + " button: "+ element.innerHTML + "\n" ;
-                    objetoJSON = objetoJSON + " tipo: '" +element.nodeName + "' \n";
-                    
-                }
-            
+            let resultadoBoton = "";
+            if(element.selected == "selected"){
+                resultadoBoton = " button: "+ element.innerHTML + ",\n" ;
+                resultadoBoton = resultadoBoton + " tipo: '" +element.nodeName + "' \n";
+                
+            }
+            return resultadoBoton;
             break;
-            case "P":
+        case "P":
                 if(element.className === "help-block"){
-                    objetoJSON = objetoJSON + " texto de ayuda: '" + element.innerHTML + "' \n" ;
+                    return " texto de ayuda: '" + element.innerHTML + "' \n" ;
                     
                 }else if(element.className === "opcion" ){
-                    objetoJSON = objetoJSON + " opcion: '" + element.innerHTML + "' \n" ; 
+                    return " opcion: '" + element.innerHTML + "' \n" ; 
                     
                 }else{
-                    objetoJSON = objetoJSON + " p: " + element.innerHTML + "\n" ;
+                    return " p: " + element.innerHTML + "\n" ;
 
                 }
 
-        break;
+            break;
     }
 }
 
