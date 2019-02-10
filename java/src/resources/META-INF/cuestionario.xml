@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="main.java.com.javaRestfull.encuesta.ClasesImp.CuestionarioImp" table="articulo">
+
+        <id name="OID" type="string">
+            <column name="oidCuestionario"/>
+            <generator class="uuid"/>
+        </id>
+
+        <property name="codCuestionario" type="string">
+            <column name="codCuestionario"/>
+        </property>
+
+        <property name="nombreCuestionario" type="java.lang.String">
+            <column name="nombreCuestionario"/>
+        </property>
+
+        <property name="fechaCreacionCuestionario" type="java.util.Date">
+            <column name="fechaCreacion"/>
+        </property>
+
+        <property name="fechaInicioCuestionario" type="java.util.Date">
+            <column name="fechaInicio"/>
+        </property>
+
+        <property name="fechaCierreCuestionario" type="java.util.Date">
+            <column name="fechaCierre"/>
+        </property>
+
+        <property name="horaInicioCuestionario" type="java.util.Date">
+            <column name="horaInicio"/>
+        </property>
+
+        <property name="horaCierreCuestionario" type="java.util.Date">
+            <column name="horaCierre"/>
+        </property>
+
+        <bag name="preguntaOpcionImpList" cascade="none" table="preguntaOpcion" inverse="false">
+            <key column="oidCuestionario" not-null="true"/>
+            <one-to-many class="main.java.com.javaRestfull.encuesta.ClasesImp.PreguntaOpcionImp"/>
+        </bag>
+
+
+    </class>
+</hibernate-mapping>
