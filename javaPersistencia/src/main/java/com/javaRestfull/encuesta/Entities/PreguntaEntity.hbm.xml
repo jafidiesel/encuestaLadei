@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="main.java.com.javaRestfull.encuesta.Entities.PreguntaEntity" table="pregunta" schema="public" catalog="EncuestaDB">
+        <id name="oidPregunta" column="oidPregunta"/>
+        <property name="codPregunta" column="codPregunta"/>
+        <property name="descripcionPregunta" column="descripcionPregunta"/>
+        <one-to-one name="preguntaOpcionByOidPregunta" class="main.java.com.javaRestfull.encuesta.Entities.PreguntaOpcionEntity"/>
+    </class>
+</hibernate-mapping>

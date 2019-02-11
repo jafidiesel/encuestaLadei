@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/EncuestaDB</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/CuestionarioRespuestaUsuarioEntity.hbm.xml"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.CuestionarioRespuestaUsuarioEntity"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.CuestionarioEntity"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/CuestionarioEntity.hbm.xml"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.DetalleUsuarioEntity"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/DetalleUsuarioEntity.hbm.xml"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.OpcionEntity"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/OpcionEntity.hbm.xml"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/PreguntaEntity.hbm.xml"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.PreguntaEntity"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.PreguntaOpcionEntity"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/PreguntaOpcionEntity.hbm.xml"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.RespuestaEntity"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/RespuestaEntity.hbm.xml"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.TagEntity"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/TagEntity.hbm.xml"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.TipoOpcionEntity"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/TipoOpcionEntity.hbm.xml"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/TipoUsuarioEntity.hbm.xml"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.TipoUsuarioEntity"/>
+        <mapping class="main.java.com.javaRestfull.encuesta.Entities.UsuarioEntity"/>
+        <mapping resource="main/java/com/javaRestfull/encuesta/Entities/UsuarioEntity.hbm.xml"/>
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>
