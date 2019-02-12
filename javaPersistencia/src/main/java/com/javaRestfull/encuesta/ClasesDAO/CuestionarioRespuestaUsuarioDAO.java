@@ -1,36 +1,7 @@
 package main.java.com.javaRestfull.encuesta.ClasesDAO;
 
-import main.java.com.javaRestfull.encuesta.ClasesImp.CuestionarioRespuestaUsuarioImp;
-import main.java.com.javaRestfull.encuesta.ClasesImp.OpcionImp;
+import main.java.com.javaRestfull.encuesta.Entities.CuestionarioRespuestaUsuarioEntity;
 
-import java.util.List;
-import java.util.Optional;
+public interface CuestionarioRespuestaUsuarioDAO extends Dao<CuestionarioRespuestaUsuarioEntity> {
 
-public class CuestionarioRespuestaUsuarioDAO implements Dao<CuestionarioRespuestaUsuarioImp> {
-
-
-    @Override
-    public Optional<CuestionarioRespuestaUsuarioImp> get(long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<CuestionarioRespuestaUsuarioImp> getAll() {
-        return null;
-    }
-
-    @Override
-    public void save(CuestionarioRespuestaUsuarioImp cuestionarioRespuestaUsuarioImp) {
-
-    }
-
-    @Override
-    public void update(CuestionarioRespuestaUsuarioImp cuestionarioRespuestaUsuarioImp, String[] params) {
-
-    }
-
-    @Override
-    public void delete(CuestionarioRespuestaUsuarioImp cuestionarioRespuestaUsuarioImp) {
-
-    }
 }

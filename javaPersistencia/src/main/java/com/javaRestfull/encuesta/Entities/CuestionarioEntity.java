@@ -1,5 +1,7 @@
 package main.java.com.javaRestfull.encuesta.Entities;
 
+import main.java.com.javaRestfull.encuesta.ClasesImp.CuestionarioImp;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -9,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "cuestionario", schema = "public", catalog = "EncuestaDB")
-public class CuestionarioEntity extends EntidadGeneral implements Serializable{
+public class CuestionarioEntity implements Serializable{
     private String codCuestionario;
     private String nombreCuestionario;
     private Date fechaCreacion;
@@ -20,6 +22,7 @@ public class CuestionarioEntity extends EntidadGeneral implements Serializable{
     private Object oidCuestionario;
     private CuestionarioRespuestaUsuarioEntity cuestionarioRespuestaUsuarioByOidCuestionario;
     private UsuarioEntity usuarioByOidCuestionario;
+
 
     @Basic
     @Column(name = "codCuestionario")

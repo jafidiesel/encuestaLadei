@@ -7,5 +7,15 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/EncuestaDB</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="resources:META-INF:hibernate.cfg.xml/Hibernate" uuid="b80ba96d-63fc-4973-ab4e-b797ee686acb">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+D:/git/encuestaLadei/javaPersistencia/src/resources/META-INF/hibernate.cfg.xml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/EncuestaDB</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -1,36 +1,35 @@
 package main.java.com.javaRestfull.encuesta.ClasesDAO;
 
-import main.java.com.javaRestfull.encuesta.ClasesImp.MateriaImp;
-import main.java.com.javaRestfull.encuesta.ClasesImp.OpcionImp;
+import main.java.com.javaRestfull.encuesta.ClasesDto.MateriaDTO;
 
 import java.util.List;
-import java.util.Optional;
 
-public class MateriaDAO implements Dao<MateriaImp> {
+public class MateriaDAO implements Dao<MateriaDTO> {
 
 
-    @Override
-    public Optional<MateriaImp> get(long id) {
-        return Optional.empty();
-    }
 
     @Override
-    public List<MateriaImp> getAll() {
+    public Object get(String nombreClase, Criterio criterio) {
         return null;
     }
 
     @Override
-    public void save(MateriaImp materiaImp) {
+    public List<MateriaDTO> getAll() {
+        return null;
+    }
+
+    @Override
+    public void save(MateriaDTO materiaDTO) {
 
     }
 
     @Override
-    public void update(MateriaImp materiaImp, String[] params) {
+    public void update(MateriaDTO materiaDTO, String[] params) {
 
     }
 
     @Override
-    public void delete(MateriaImp materiaImp) {
+    public void delete(MateriaDTO materiaDTO) {
 
     }
 }

@@ -1,12 +1,11 @@
 package main.java.com.javaRestfull.encuesta.ClasesDAO;
 
 import java.util.List;
-import java.util.Optional;
 
 //Intermediario
 public interface Dao<T> {
 
-    Optional<T> get(long id);
+    Object get(String nombreClase, Criterio criterio);
 
     List<T> getAll();
 
