@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="PostgreSQL - EncuestaDB@localhost" uuid="c6f8136c-7146-436d-8c2a-03c9af9ae648">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/EncuestaDB</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="resources:META-INF:hibernate.cfg.xml/Hibernate" uuid="b80ba96d-63fc-4973-ab4e-b797ee686acb">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+D:/git/encuestaLadei/javaPersistencia/src/resources/META-INF/hibernate.cfg.xml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/EncuestaDB</jdbc-url>
+    </data-source>
+  </component>
+</project>
