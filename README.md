@@ -1,16 +1,22 @@
-#Bootstrap3 Form Builder
+# AskMe
+## Aplicación de encuesta estudiantil
 
-##What's this?
+### Informe anual 2018 - LADEi
 
-A Drag-and-drop form builder for [twitter bootstrap](http://twitter.github.com/bootstrap/). 
+#### Pitch
+AskMe es una aplicación simplificada e intuitiva de cuestionario con el objetivo de brindarle al docente una herramienta de rápida acción y fácil uso.
 
-Currently using `v3.0.3` :dolphin:
+#### Cómo funciona
+La aplicación se vale de la creación de un cuestionario en una serie de pasos sencillos con posibilidad de compartirla fácilmente al público objetivo mediante links, correos y/o usuarios.
+Una vez creada la encuesta se podrán visualizar cómodamente resultados cualitativos obtenidos en un amplio tablero.
+Además, se le brindará al realizador del cuestionario (docente) la posibilidad de crear sus propio banco de preguntas o contribuir a un banco de preguntas colaborativo.
 
-##Where can I see it in action?
+#### Hacia quién está dirigido
+Dirigido a docentes familiarizados con el manejo de una PC.
 
-It's hosted on github pages [here](http://minikomi.github.io/Bootstrap-Form-Builder/).
+#### Estructura de la aplicación
+La aplicación está dividida en dos grandes bloques:
 
-### Just click index.html
+- El primer bloque es el front-end que define la interfaz de encuesta con sus reglas de construcción, su set de preguntas y respuestas.
 
-TO see it ex.[here](http://www.xinzhanguo.cn/demo/formbulider/).
-[other demo](http://bootsnipp.com/j87klPolka/formbuilder3.html).
+- El segundo bloque es el back-end que es el encargado del tratamiento, persistencia de datos y comunicación con el front-end mediante API Rest.
